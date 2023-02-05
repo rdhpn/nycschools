@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">nycschools</string>
+    <string name="school_name">SCHOOL NAME</string>
+    <string name="address">ADDRESS</string>
+    <string name="phone_number">PHONE NUMBER</string>
+    <string name="more">MORE</string>
+    <string name="someOtherString">Other</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sat_reading">SAT reading</string>
+    <string name="sat_writing">SAT writing</string>
+    <string name="sat_math">SAT math</string>
+    <string name="number_of_sat_test_taker">Number of SAT test taker</string>
+    <string name="back_to_school_list">Back to School List</string>
+</resources>
