@@ -38,7 +38,7 @@ class DetailsFragment: BaseFragment() {
             adapter = schoolAdapter
         }
 
-        schoolViewModel.schools.observe(viewLifecycleOwner) {
+        schoolViewModel.SAT.observe(viewLifecycleOwner) {
                 state -> when(state) {
             is UIState.LOADING -> {
 
