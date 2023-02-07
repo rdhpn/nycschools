@@ -5,13 +5,16 @@ import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.nycschools.utils.SchoolsViewModelFactory
 import com.example.nycschools.viewmodel.SchoolsViewModel
 import javax.inject.Inject
 
 open class BaseFragment : Fragment() {
+    @Inject
+    lateinit var schoolsViewModelFactory: SchoolsViewModelFactory
 
     protected val schoolViewModel: SchoolsViewModel by lazy {
-        ViewModelProvider(requireActivity())[SchoolsViewModel::class.java]
+        ViewModelProvider(requireActivity(), schoolsViewModelFactory)[SchoolsViewModel::class.java]
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

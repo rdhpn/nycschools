@@ -22,9 +22,9 @@ class SchoolRepositoryImpl @Inject constructor(
             val response = api.getAllSchools()
             if (response.isSuccessful) {
                 response.body()?.let {
-                    val states = mutableListOf<SchoolsItem>()
-                    states.addAll(it)
-                    emit(UIState.SUCCESS(states))
+//                    val states = mutableListOf<SchoolsItem>()
+//                    states.addAll(it)
+                    emit(UIState.SUCCESS(it))
                 } ?: throw NullPeopleResponse()
             } else {
                 throw FailureResponse(response.errorBody()?.string())

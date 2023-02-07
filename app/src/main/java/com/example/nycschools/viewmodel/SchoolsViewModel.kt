@@ -27,10 +27,46 @@ class SchoolsViewModel (
     private val ioDispatcher : CoroutineDispatcher = Dispatchers.IO,
 ) : ViewModel() {
 
+    init {
+        getAllSchools()
+        getSAT()
+    }
+
+    var dbn = ""
     var fragmentState: Boolean = false
 
     private val _SAT: MutableLiveData<UIState<SchoolsResponseItem>> = MutableLiveData(UIState.LOADING)
     val SAT: LiveData<UIState<SchoolsResponseItem>> get() = _SAT
+
+    private val _schools: MutableLiveData<UIState<List<SchoolsItem>>> = MutableLiveData(UIState.LOADING)
+    val schools: LiveData<UIState<List<SchoolsItem>>> get() = _schools
+
+    fun getAllSchools() {
+        viewModelScope.launch(ioDispatcher) {
+            schoolRepository.getSchools().collect {
+                _schools.postValue((it))
+//                try {
+//                    val response = serviceApi.getAllSchools()
+//                    if (response.isSuccessful){
+//                        response.body()?.let {
+//                            // this post value works in main thread and worker thread
+//                            _schools.postValue(it)
+////                            withContext(Dispatchers.Main) {
+//                                // this set value only works in the main thread
+//                                // _schools.value = UIState.SUCCESS(it)
+//                                Log.d(TAG, "onCreate: $it")
+//                            }
+//                        } ?: throw Exception("Error null schools response")
+//                    } else {
+//                        throw Exception(response.errorBody()?.string())
+//                    }
+//                } catch (e: Exception) {
+//                    _schools.postValue((UIState.ERROR(e)))
+//                    Log.e(TAG, "onCreate: ${e.localizedMessage}")
+//                }
+        }
+    }
+}
 
     fun getSAT(id: String? = null) {
         id?.let {
@@ -40,34 +76,6 @@ class SchoolsViewModel (
                     _SAT.postValue(it)
                 }
             }
-        }
-    }
-    
-    private val _schools: MutableLiveData<UIState<List<SchoolsItem>>> = MutableLiveData(UIState.LOADING)
-    val schools: LiveData<UIState<List<SchoolsItem>>> get() = _schools
-
-    fun getAllSchools() {
-        viewModelScope.launch(ioDispatcher) {
-                _schools.postValue((UIState.LOADING))
-                try {
-                    val response = serviceApi.getAllSchools()
-                    if (response.isSuccessful){
-                        response.body()?.let {
-                            // this post value works in main thread and worker thread
-                            _schools.postValue(UIState.SUCCESS(it))
-                            withContext(Dispatchers.Main) {
-                                // this set value only works in the main thread
-                                // _schools.value = UIState.SUCCESS(it)
-                                Log.d(TAG, "onCreate: $it")
-                            }
-                        } ?: throw Exception("Error null schools response")
-                    } else {
-                        throw Exception(response.errorBody()?.string())
-                    }
-                } catch (e: Exception) {
-                    _schools.postValue((UIState.ERROR(e)))
-                    Log.e(TAG, "onCreate: ${e.localizedMessage}")
-                }
         }
     }
 }
