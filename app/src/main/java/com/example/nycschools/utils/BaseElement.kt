@@ -5,6 +5,7 @@ import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.nycschools.di.SchoolsApp
 import com.example.nycschools.utils.SchoolsViewModelFactory
 import com.example.nycschools.viewmodel.SchoolsViewModel
 import javax.inject.Inject
@@ -19,6 +20,7 @@ open class BaseFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        SchoolsApp.schoolsComponent.inject(this)
     }
 
     protected fun showError(message: String, action: () -> Unit)  {

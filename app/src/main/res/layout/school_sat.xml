@@ -7,6 +7,14 @@
 
         <TextView
             app:layout_constraintTop_toBottomOf="@id/math"
+            android:id="@+id/school_name"
+            android:text="@string/school_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:viewBindingType="TextView" />
+
+        <TextView
+            app:layout_constraintTop_toBottomOf="@id/math"
             android:id="@+id/reading"
             android:text="@string/sat_reading"
             android:layout_width="match_parent"
@@ -39,14 +47,14 @@
             tools:viewBindingType="TextView" />
 
 
-        <Button
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:id="@+id/backToSchoolList"
-            android:text="@string/back_to_school_list"
-            android:layout_margin="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:viewBindingType="Button" />
+<!--        <Button-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            android:id="@+id/backToSchoolList"-->
+<!--            android:text="@string/back_to_school_list"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            tools:viewBindingType="Button" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

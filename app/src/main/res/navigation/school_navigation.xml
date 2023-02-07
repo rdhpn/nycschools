@@ -22,9 +22,9 @@
         tools:layout="@layout/fragment_details"
         android:label="School Details">
 
-        <action
-            android:id="@+id/action_DetailsFragment_to_SchoolsFragment"
-            app:destination="@id/SchoolsFragment" />
+<!--        <action-->
+<!--            android:id="@+id/action_DetailsFragment_to_SchoolsFragment"-->
+<!--            app:destination="@id/SchoolsFragment" />-->
     </fragment>
 
 </navigation>
