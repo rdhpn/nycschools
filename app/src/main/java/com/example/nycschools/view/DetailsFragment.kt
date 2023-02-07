@@ -5,9 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.DialogFragmentNavigatorDestinationBuilder
 import com.example.nycschools.databinding.SchoolSatBinding
-import com.example.nycschools.model.SchoolsResponseItem
+import com.example.nycschools.model.SchoolSatItem
 import com.example.nycschools.utils.UIState
 import com.example.starwarsmvvm.utils.BaseFragment
 
@@ -26,8 +25,8 @@ class DetailsFragment: BaseFragment() {
                 state -> when(state) {
             is UIState.LOADING -> {}
             is UIState.SUCCESS<*> -> {
-                schoolViewModel.getSAT()
-                val sats = state.response as SchoolsResponseItem
+//                schoolViewModel.getSAT()
+                val sats = state.response as SchoolSatItem
                 binding.writing.text = sats.satWritingAvgScore
                 binding.reading.text = sats.satCriticalReadingAvgScore
                 binding.math.text = sats.satMathAvgScore
@@ -39,7 +38,7 @@ class DetailsFragment: BaseFragment() {
                     .setTitle("Error occurred")
                     .setMessage(state.error.localizedMessage)
                     .setPositiveButton("RETRY") { dialog, _ ->
-                        schoolViewModel.getSAT()
+                        schoolViewModel.getAllSchools()
                         dialog.dismiss()
                     }
                     .setNegativeButton("DISMISS") { dialog, _ ->
@@ -51,7 +50,7 @@ class DetailsFragment: BaseFragment() {
         }
         }
 
-        schoolViewModel.getSAT()
+//        schoolViewModel.getSAT()
 
         return binding.root
     }

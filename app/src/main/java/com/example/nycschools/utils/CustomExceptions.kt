@@ -1,6 +1,4 @@
 package com.example.nycschools.utils
 
-class NullPeopleResponse(message: String = "People response is null") : Exception(message)
-class NullPlanetsResponse(message: String = "Planets response is null") : Exception(message)
-class NullStarshipsResponse(message: String = "Starships response is null") : Exception(message)
+class NullSchoolResponse(message: String = "School response is null") : Exception(message)
 class FailureResponse(message: String?) : Exception(message)

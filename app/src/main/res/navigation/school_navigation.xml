@@ -10,7 +10,6 @@
         android:name="com.example.nycschools.view.SchoolsFragment"
         tools:layout="@layout/fragment_schools"
         android:label="NYC Schools">
-
         <action
             android:id="@+id/action_SchoolsFragment_to_DetailsFragment"
             app:destination="@id/DetailsFragment" />
@@ -19,12 +18,7 @@
     <fragment
         android:id="@+id/DetailsFragment"
         android:name="com.example.nycschools.view.DetailsFragment"
-        tools:layout="@layout/fragment_details"
-        android:label="School Details">
-
-<!--        <action-->
-<!--            android:id="@+id/action_DetailsFragment_to_SchoolsFragment"-->
-<!--            app:destination="@id/SchoolsFragment" />-->
-    </fragment>
+        tools:layout="@layout/school_sat"
+        android:label="School Details"/>
 
 </navigation>

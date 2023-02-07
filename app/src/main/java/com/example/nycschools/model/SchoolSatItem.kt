@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class SchoolsResponseItem(
+data class SchoolSatItem(
     @Json(name = "dbn")
     val dbn: String? = null,
     @Json(name = "num_of_sat_test_takers")

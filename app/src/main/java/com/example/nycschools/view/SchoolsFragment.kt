@@ -45,9 +45,7 @@ class SchoolsFragment : BaseFragment() {
 
         schoolViewModel.schools.observe(viewLifecycleOwner) {
                 state -> when(state) {
-                is UIState.LOADING -> {
-
-                }
+                is UIState.LOADING -> { }
                 is UIState.SUCCESS<List<SchoolsItem>> -> {
                     schoolAdapter.updateSchools(state.response)
                 }
@@ -68,7 +66,7 @@ class SchoolsFragment : BaseFragment() {
             }
         }
 
-        schoolViewModel.getAllSchools()
+//        schoolViewModel.getAllSchools()
 
         return binding.root
     }
