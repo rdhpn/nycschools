@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.nycschools.databinding.ActivityMainBinding
+import com.example.nycschools.di.SchoolsApp
 
 private const val TAG = "MainActivity"
 
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding =  ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+        SchoolsApp.schoolsComponent.inject(this)
 
         val navHost = supportFragmentManager.findFragmentById(R.id.frag_container) as NavHostFragment
         setupActionBarWithNavController(navHost.navController)
