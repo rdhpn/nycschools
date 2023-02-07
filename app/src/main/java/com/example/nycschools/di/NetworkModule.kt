@@ -2,6 +2,7 @@ package com.example.nycschools.di
 
 import com.example.nycschools.rest.ServiceApi
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import kotlinx.coroutines.CoroutineDispatcher
@@ -15,6 +16,11 @@ import java.util.concurrent.TimeUnit
 @Module
 class NetworkModule {
 
+    @Provides
+    fun providesMoshi(): Moshi =
+        Moshi.Builder()
+            .addLast(KotlinJsonAdapterFactory())
+            .build()
     @Provides
     fun providesRetrofit(
         okHttpClient: OkHttpClient,
