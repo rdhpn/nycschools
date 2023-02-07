@@ -11,7 +11,6 @@ import com.example.nycschools.R
 import com.example.nycschools.adapter.SchoolAdapter
 import com.example.nycschools.databinding.FragmentSchoolsBinding
 import com.example.nycschools.model.SchoolsItem
-import com.example.nycschools.model.SchoolsResponse
 import com.example.nycschools.utils.UIState
 import com.example.starwarsmvvm.utils.BaseFragment
 

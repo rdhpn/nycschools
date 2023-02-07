@@ -72,7 +72,7 @@ class SchoolViewHolder(
 
     fun schoolBinding(school: SchoolsItem, onClickedSchool: (SchoolsItem) -> Unit) {
         binding.schoolName.text = school.schoolName
-        binding.schoolAddress.text = school.location
+        binding.schoolAddress.text = school.primaryAddressLine1
         binding.schoolPhone.text = school.phoneNumber
         binding.moreBtn.setOnClickListener {
             onClickedSchool(school)
