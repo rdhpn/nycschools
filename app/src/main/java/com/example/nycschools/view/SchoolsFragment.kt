@@ -2,6 +2,7 @@ package com.example.nycschools.view
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import com.example.nycschools.model.SchoolsItem
 import com.example.nycschools.utils.UIState
 import com.example.starwarsmvvm.utils.BaseFragment
 
+private const val TAG = "SchoolsFragment"
 class SchoolsFragment : BaseFragment() {
 
     private val binding by lazy {
@@ -22,8 +24,8 @@ class SchoolsFragment : BaseFragment() {
 
     private val schoolAdapter by lazy {
         SchoolAdapter {
+            schoolViewModel.getSAT(it.dbn)
             findNavController().navigate(R.id.action_SchoolsFragment_to_DetailsFragment)
-            schoolViewModel.dbn = it.dbn.toString()
         }
     }
 
@@ -31,7 +33,6 @@ class SchoolsFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
 
         binding.schoolRv.apply {
             layoutManager = LinearLayoutManager(
@@ -65,7 +66,6 @@ class SchoolsFragment : BaseFragment() {
             }
         }
 
-//        schoolViewModel.getAllSchools()
 
         return binding.root
     }

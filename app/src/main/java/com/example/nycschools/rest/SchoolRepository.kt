@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 interface SchoolRepository {
     fun getSchools(): Flow<UIState<List<SchoolsItem>>>
-    fun getSAT(dbn: String): Flow<UIState<SchoolSatItem>>
+    fun getSAT(dbn: String): Flow<UIState<List<SchoolSatItem>>>
 }
 
 class SchoolRepositoryImpl @Inject constructor(
@@ -34,7 +34,7 @@ class SchoolRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getSAT(dbn: String): Flow<UIState<SchoolSatItem>> = flow {
+    override fun getSAT(dbn: String): Flow<UIState<List<SchoolSatItem>>> = flow {
         emit(UIState.LOADING)
         try {
             val response = api.getSAT(dbn)

@@ -1,5 +1,6 @@
 package com.example.nycschools.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -26,13 +27,12 @@ class SchoolsViewModel @Inject constructor(
 
     init {
         getAllSchools()
-//        getSAT()
     }
 
     var dbn = ""
 
-    private val _SAT: MutableLiveData<UIState<SchoolSatItem>> = MutableLiveData(UIState.LOADING)
-    val SAT: LiveData<UIState<SchoolSatItem>> get() = _SAT
+    private val _SAT: MutableLiveData<UIState<List<SchoolSatItem>>> = MutableLiveData(UIState.LOADING)
+    val SAT: LiveData<UIState<List<SchoolSatItem>>> get() = _SAT
 
     private val _schools: MutableLiveData<UIState<List<SchoolsItem>>> = MutableLiveData(UIState.LOADING)
     val schools: LiveData<UIState<List<SchoolsItem>>> get() = _schools
@@ -45,14 +45,14 @@ class SchoolsViewModel @Inject constructor(
     }
 }
 
-//    fun getSAT(dbn: String? = null) {
-//        dbn?.let {
-//            viewModelScope.launch(ioDispatcher) {
-//                Log.d("SchoolsViewModel", "getSAT: $it")
-//                schoolRepository.getSAT(it).collect {
-//                    _SAT.postValue(it)
-//                }
-//            }
-//        }
-//    }
+    fun getSAT(dbn: String? = null) {
+        dbn?.let {
+            viewModelScope.launch(ioDispatcher) {
+                Log.d("SchoolsViewModel", "getSAT: $it")
+                schoolRepository.getSAT(it).collect {
+                    _SAT.postValue(it)
+                }
+            }
+        }
+    }
 }

@@ -18,9 +18,6 @@ class MainActivity : AppCompatActivity() {
         binding =  ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
         SchoolsApp.schoolsComponent.inject(this)
-
-//        val navHost = supportFragmentManager.findFragmentById(R.id.frag_container) as NavHostFragment
-//        setupActionBarWithNavController(navHost.navController)
     }
 
     override fun onDestroy() {

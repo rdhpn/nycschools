@@ -14,13 +14,11 @@ interface ServiceApi {
     @GET(SCHOOL_PATH)
     suspend fun getAllSchools(): Response<List<SchoolsItem>>
 
-//    @GET(SAT_PATH)
-//    suspend fun getSAT(): Response<SchoolSatItem>
 
     @GET(SAT_PATH)
-    fun getSAT(
+    suspend fun getSAT(
         @Query("dbn") dbn: String
-    ): Response<SchoolSatItem>
+    ): Response<List<SchoolSatItem>>
 
 
     companion object {

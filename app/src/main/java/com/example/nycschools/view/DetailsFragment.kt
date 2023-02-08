@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.nycschools.R
 import com.example.nycschools.databinding.SchoolSatBinding
 import com.example.nycschools.model.SchoolSatItem
 import com.example.nycschools.utils.UIState
@@ -25,13 +26,12 @@ class DetailsFragment: BaseFragment() {
                 state -> when(state) {
             is UIState.LOADING -> {}
             is UIState.SUCCESS<*> -> {
-//                schoolViewModel.getSAT()
-                val sats = state.response as SchoolSatItem
-                binding.writing.text = sats.satWritingAvgScore
-                binding.reading.text = sats.satCriticalReadingAvgScore
-                binding.math.text = sats.satMathAvgScore
-                binding.schoolName.text = sats.schoolName
-                binding.numberOfTestTaker.text = sats.numOfSatTestTakers
+                val sats = state.response as List<SchoolSatItem>
+                binding.writing.text = getString(R.string.sat_writing, sats[0].satWritingAvgScore)
+                binding.reading.text = "Reading Score: " + sats[0].satCriticalReadingAvgScore
+                binding.math.text = "Math Score: " +sats[0].satMathAvgScore
+                binding.schoolName.text = sats[0].schoolName
+                binding.numberOfTestTaker.text = "Number of Test Taker: " + sats[0].numOfSatTestTakers
             }
             is UIState.ERROR -> {
                 AlertDialog.Builder(requireActivity())
@@ -50,7 +50,6 @@ class DetailsFragment: BaseFragment() {
         }
         }
 
-//        schoolViewModel.getSAT()
 
         return binding.root
     }

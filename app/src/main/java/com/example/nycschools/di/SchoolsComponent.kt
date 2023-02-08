@@ -13,5 +13,5 @@ import dagger.Component
 ])
 interface SchoolsComponent {
     fun inject(mainActivity: MainActivity)
-    fun inject(BaseFragment: BaseFragment)
+    fun inject(baseFragment: BaseFragment)
 }
